@@ -109,8 +109,8 @@ def vidascii(vidName, frameRate, cols):
     audio = moviepy.editor.VideoFileClip(vidName).audio
     imglst = [f"frames/f{i}.png" for i in range(1, count)]
     vid = moviepy.editor.ImageSequenceClip(imglst, fps=frameRate)
-    vidAUD = vid.set_audio(audio.set_duration(vid.duration))
-    vidAUD.write_videofile(outVidName, audio_codec='aac')
+    vidAUD = vid.set_audio(audio)
+    vidAUD.write_videofile(outVidName, codec='mpeg4', audio_codec='aac')
     for i in range(1, count):
         os.remove(f"frames/f{i}.png")
     os.rmdir('frames')
